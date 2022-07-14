@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Create Input Files - Hugo Whisper Theme</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://ekcinaws.github.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.6719d72e323121369d5caeb4264b95d8a63cf1deaab029da67602fe5a046e0a4.css">
+  
+
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://ekcinaws.github.io/"><img alt="Logo" src="/images/logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://ekcinaws.github.io/"><img alt="Logo" src="/images/logo-mobile.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+
+    
+    
+    
+    
+    
+    
+
+    
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+      <div class="row">
+        <div class="col-12 col-md-3 mb-3">
+          <div class="sidebar">
+            
+<div class="docs-menu">
+  <h4>Docs</h4>
+  <ul>
+    
+    <li class="">
+      <a href="https://ekcinaws.github.io/docs/install-hugo/">Install Hugo</a>
+    </li>
+    
+    <li class="">
+      <a href="https://ekcinaws.github.io/docs/install-theme/">Install Theme</a>
+    </li>
+    
+    <li class="">
+      <a href="https://ekcinaws.github.io/docs/configure/">Configuration</a>
+    </li>
+    
+    <li class="active ">
+      <a href="https://ekcinaws.github.io/docs/example/">Create Input Files</a>
+    </li>
+    
+  </ul>
+</div>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-9">
+          
+<h1 class="title">Create Input Files</h1>
+<div class="content ">
+  <p>This section shows how to create a valid set of employee data and shop data input files for the relational database.</p>
+<h1 id="overview">Overview</h1>
+<p>Acme pulls and transforms data from a pair of .csv input files to populate a table in the relational database.</p>
+<p>The .csv input file pairs consist of:</p>
+<ul>
+<li>an employee data file (.csv)</li>
+<li>a shop data file (.csv)</li>
+</ul>
+<h2 id="database-fields">Database Fields</h2>
+<p>The database table populates with the following fields and types of data:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>INT</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>STRING</td>
+</tr>
+<tr>
+<td>MANAGER</td>
+<td>STRING</td>
+</tr>
+<tr>
+<td>OPEN</td>
+<td>STRING</td>
+</tr>
+<tr>
+<td>CLOSE</td>
+<td>STRING</td>
+</tr>
+<tr>
+<td>DURATION</td>
+<td>INT</td>
+</tr>
+<tr>
+<td>REVENUE</td>
+<td>DOUBLE</td>
+</tr>
+<tr>
+<td>CCY</td>
+<td>STRING</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-transformation">Data Transformation</h2>
+<p>Acme pulls data from each .csv file and populates the corresponding database field.</p>
+<p>The following table shows fields or properties of each .csv file and the corresponding field in the database.</p>
+<h3 id="employee-file">Employee File</h3>
+<table>
+<thead>
+<tr>
+<th>.csv File</th>
+<th>Database</th>
+<th>Transformation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>none</td>
+<td>employee ID #</td>
+</tr>
+<tr>
+<td>name</td>
+<td>MANAGER</td>
+<td>none</td>
+<td>retrieved via employee ID # in the shop file</td>
+</tr>
+<tr>
+<td>joined_date</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>not used</td>
+</tr>
+<tr>
+<td>active</td>
+<td>n/a</td>
+<td>load only if y</td>
+<td>only loads data for active employees (if active = &ldquo;Y&rdquo;)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shop-file">Shop File</h3>
+<table>
+<thead>
+<tr>
+<th>.csv File</th>
+<th>Database</th>
+<th>Transformation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Id</td>
+<td>ID</td>
+<td>None</td>
+<td>shop ID #</td>
+</tr>
+<tr>
+<td>.csv filename</td>
+<td>DATE</td>
+<td>add hyphens DD-MM-YYYY</td>
+<td>date</td>
+</tr>
+<tr>
+<td>manager</td>
+<td>MANAGER</td>
+<td>INT (employee ID) to STRING (employee name)</td>
+<td>name of manager via join to the person file</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>OPEN</td>
+<td>parse first time; if blank DURATION and REVENUE are set to zero and the CCY to N/A</td>
+<td>Parses the opening time from shop hours</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>CLOSE</td>
+<td>parse second time; if blank DURATION and REVENUE are set to zero and the CCY to N/A</td>
+<td>Parses the closing time from shop hours</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>DURATION</td>
+<td>calculate difference between start and end times, in minutes; if blank DURATION and REVENUE are set to zero and the CCY to N/A</td>
+<td>Total duration of shop open hours, in minutes</td>
+</tr>
+<tr>
+<td>sales</td>
+<td>REVENUE</td>
+<td>none</td>
+<td>sales/revenue for the date</td>
+</tr>
+<tr>
+<td>ccy</td>
+<td>CCY</td>
+<td>transform to ISO code</td>
+<td>ISO code e.g. USD, GBP</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
+<p>The following is an example of an employee .csv file and a shop .csv used to input data into a table.</p>
+<h3 id="personcsv">person.csv</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">id,name,joined_date,active
+</span></span><span class="line"><span class="cl">A111,chris,02-02-2008,Y
+</span></span><span class="line"><span class="cl">1116,paul,26-07-2016,Y
+</span></span><span class="line"><span class="cl">#1213,tina,01-23-2015,N
+</span></span><span class="line"><span class="cl">A1012,bill,10-05-1995,Y
+</span></span></code></pre></div><h3 id="shop_20180511csv">shop_20180511.csv</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Id,manager,hours,sales,ccy
+</span></span><span class="line"><span class="cl">201,A111,07:30-20:45,2561.45,£
+</span></span><span class="line"><span class="cl">201,1116,8:00-22:00,2561.45,$
+</span></span><span class="line"><span class="cl">111,A1012,,,
+</span></span><span class="line"><span class="cl">1112,#1213,09:00-18:45,1000,£
+</span></span><span class="line"><span class="cl">1113,A1012,12:00-13:00,125.76,£
+</span></span></code></pre></div><h3 id="database-output">Database Output</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>DATE</th>
+<th>MANAGER</th>
+<th>OPEN</th>
+<th>CLOSE</th>
+<th>DURATION</th>
+<th>REVENUE</th>
+<th>CCY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>201</td>
+<td>2018-05-11</td>
+<td>paul</td>
+<td>8:00</td>
+<td>22:00</td>
+<td>720</td>
+<td>2561.45</td>
+<td>USD</td>
+</tr>
+<tr>
+<td>111</td>
+<td>2018-05-11</td>
+<td>chris</td>
+<td>null</td>
+<td>null</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>1113</td>
+<td>2018-05-11</td>
+<td>bill</td>
+<td>12:00</td>
+<td>13:00</td>
+<td>60</td>
+<td>125.76</td>
+<td>GBP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="notes">Notes</h3>
+<p>The first line in the .csv file labels the data of the subsequent lines, in order. The first line does not populate the database table.</p>
+<p>Data for employee Tina (line 4 of person.csv) does not populate the database table because Tina is marked not active (&ldquo;N&rdquo;).</p>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li class="zerostatic"><a href="https://www.zerostatic.io">www.zerostatic.io</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
+  
+
+  
+  
+  
+    
+  
+
+
+</body>
+
+</html>
